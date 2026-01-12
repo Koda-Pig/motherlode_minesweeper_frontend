@@ -3,24 +3,29 @@ import { CurrencyInput } from "./components/currency-input";
 import { Input } from "./components/ui/input";
 import { calculateProfit } from "./lib/utils";
 import { GameGrid } from "./components/game-grid";
+import type { UserInputs } from "./types";
 
 function App() {
-  const [inputs, setInputs] = useState({
+  const [userInputs, setUserInputs] = useState<UserInputs>({
     bet: 1,
     mines: 15,
     gems: 10
   });
 
-  const profit = calculateProfit(inputs.bet, inputs.mines, inputs.gems);
+  const profit = calculateProfit(
+    userInputs.bet,
+    userInputs.mines,
+    userInputs.gems
+  );
 
   return (
     <>
       <span className="absolute top-2.5 right-2.5 border-2 border-foreground rounded-xl px-3 py-1">
         connected
       </span>
-      <main className="flex gap-12 items-center justify-center p-10">
+      <main className="flex gap-12 items-center justify-center p-10 flex-wrap">
         {/* inputs etc */}
-        <div className="p-5 border-foreground border-2 flex flex-col gap-2 max-w-[30%]">
+        <div className="p-5 border-foreground border-2 flex flex-col gap-2 max-w-[min(100%,420px)]">
           <h1 className="text-4xl text-transparent p-5 border-2 border-foreground rounded-4xl text-center font-black">
             motherlode mine sweeper
           </h1>
@@ -30,9 +35,9 @@ function App() {
               bet:
             </label>
             <CurrencyInput
-              value={inputs.bet}
+              value={userInputs.bet}
               onValueChange={(value) =>
-                setInputs((prev) => ({ ...prev, bet: value }))
+                setUserInputs((prev) => ({ ...prev, bet: value }))
               }
               id="bet"
             />
@@ -48,9 +53,9 @@ function App() {
                 id="mines"
                 min={1}
                 max={24}
-                value={inputs.mines}
+                value={userInputs.mines}
                 onChange={(e) =>
-                  setInputs((prev) => ({
+                  setUserInputs((prev) => ({
                     ...prev,
                     mines: Number(e.target.value)
                   }))
@@ -65,9 +70,9 @@ function App() {
                 id="gems"
                 min={1}
                 max={24}
-                value={inputs.gems}
+                value={userInputs.gems}
                 onChange={(e) =>
-                  setInputs((prev) => ({
+                  setUserInputs((prev) => ({
                     ...prev,
                     gems: Number(e.target.value)
                   }))
@@ -80,9 +85,9 @@ function App() {
           <div>
             <p>profit:</p>
             <p className="text-xl border-foreground h-9 rounded-md border-2 px-3 py-1 text-center">
-              {profit !== null
-                ? `${profit.toFixed(2)} SOL`
-                : "Invalid combination"}
+              {profit === null
+                ? "Invalid combination"
+                : `${profit.toFixed(2)} SOL`}
             </p>
           </div>
 
@@ -96,7 +101,7 @@ function App() {
           </div>
         </div>
 
-        <GameGrid />
+        <GameGrid userInputs={userInputs} />
       </main>
     </>
   );
