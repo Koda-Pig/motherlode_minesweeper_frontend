@@ -21,7 +21,7 @@ function App() {
       <main className="flex gap-12 items-center justify-center p-10">
         {/* inputs etc */}
         <div className="p-5 border-foreground border-2 flex flex-col gap-2 max-w-[30%]">
-          <h1 className="text-4xl text-transparent px-5 py-10 border-2 border-foreground rounded-4xl text-center">
+          <h1 className="text-4xl text-transparent p-5 border-2 border-foreground rounded-4xl text-center font-black">
             motherlode mine sweeper
           </h1>
 
