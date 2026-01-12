@@ -17,7 +17,7 @@ const CurrencyInput = React.forwardRef<HTMLDivElement, CurrencyInputProps>(
       <div
         ref={ref}
         className={cn(
-          "relative flex h-9 w-full items-center rounded-md border border-input bg-transparent shadow-xs transition-[color,box-shadow]",
+          "relative flex h-9 w-full items-center rounded-md border-2 border-foreground transition-[color,box-shadow]",
           "focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]",
           className
         )}
@@ -25,7 +25,7 @@ const CurrencyInput = React.forwardRef<HTMLDivElement, CurrencyInputProps>(
       >
         {/* Invisible measurement element - establishes width for centering */}
         <span
-          className="invisible absolute left-1/2 -translate-x-1/2 text-center text-sm whitespace-nowrap pointer-events-none"
+          className="invisible absolute left-1/2 -translate-x-1/2 text-center text-xl whitespace-nowrap pointer-events-none"
           aria-hidden="true"
         >
           {displayValue} SOL
@@ -38,13 +38,13 @@ const CurrencyInput = React.forwardRef<HTMLDivElement, CurrencyInputProps>(
           onChange={(e) =>
             onValueChange(Number.parseFloat(e.target.value) || 0)
           }
-          className="caret-transparent border-0 w-full text-center bg-transparent text-transparent shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          className="no-select caret-transparent border-0 text-center text-transparent opacity-0"
           id={id}
           min="0"
           step="0.01"
         />
 
-        <span className="absolute left-1/2 -translate-x-1/2 text-sm text-foreground pointer-events-none whitespace-nowrap">
+        <span className="text-xl absolute left-1/2 -translate-x-1/2 text-foreground pointer-events-none whitespace-nowrap">
           {displayValue} SOL
         </span>
       </div>
