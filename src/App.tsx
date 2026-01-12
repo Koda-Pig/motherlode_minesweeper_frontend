@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { CurrencyInput } from "./components/currency-input";
 import { Input } from "./components/ui/input";
-import { calculateProfit } from "./lib/constants";
+import { calculateProfit } from "./lib/utils";
+import { GameGrid } from "./components/game-grid";
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -17,9 +18,10 @@ function App() {
       <span className="absolute top-2.5 right-2.5 border-2 border-foreground rounded-xl px-3 py-1">
         connected
       </span>
-      <main className="flex gap-8 items-center justify-center p-10">
-        <div className="p-5 border-foreground border-2 flex flex-col gap-2">
-          <h1 className="text-4xl text-transparent px-5 py-10 border-2 border-foreground rounded-4xl">
+      <main className="flex gap-12 items-center justify-center p-10">
+        {/* inputs etc */}
+        <div className="p-5 border-foreground border-2 flex flex-col gap-2 max-w-[30%]">
+          <h1 className="text-4xl text-transparent px-5 py-10 border-2 border-foreground rounded-4xl text-center">
             motherlode mine sweeper
           </h1>
 
@@ -85,7 +87,7 @@ function App() {
           </div>
 
           {/* cash out */}
-          <button className="border-2 mt-4 border-foreground text-2xl px-6 py-2 rounded-xl outline-2 outline-foreground outline-offset-2 mx-auto">
+          <button className="border-2 my-4 border-foreground text-2xl px-6 py-2 rounded-xl outline-2 outline-foreground outline-offset-2 mx-auto">
             CASH OUT
           </button>
 
@@ -93,6 +95,8 @@ function App() {
             <img src="eye.png" alt="lookin at you" />
           </div>
         </div>
+
+        <GameGrid />
       </main>
     </>
   );

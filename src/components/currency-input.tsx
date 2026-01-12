@@ -1,4 +1,4 @@
-import * as React from "react";
+import { forwardRef } from "react";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 
@@ -9,7 +9,7 @@ interface CurrencyInputProps {
   id: string;
 }
 
-const CurrencyInput = React.forwardRef<HTMLDivElement, CurrencyInputProps>(
+const CurrencyInput = forwardRef<HTMLDivElement, CurrencyInputProps>(
   ({ value, onValueChange, className, id, ...props }, ref) => {
     const displayValue = value ?? 0;
 
