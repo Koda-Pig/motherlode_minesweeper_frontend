@@ -12,3 +12,4 @@ Deployed here: https://motherlode-mine-sweeper.netlify.app/
 4. **Multiplier System**: Earnings multiply based on:
    - Number of mines selected at game start (higher risk = higher rewards)
    - Number of safe tiles successfully revealed
+5. Game grid is set to 5 x 5 tiles, changing the number of mines will change the number of gems to keep the correct total (and vice versa)
