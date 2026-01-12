@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { CurrencyInput } from "./components/currency-input";
 import { Input } from "./components/ui/input";
 import { calculateProfit } from "./lib/utils";
