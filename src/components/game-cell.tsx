@@ -21,7 +21,7 @@ const GameCell = forwardRef<HTMLButtonElement, GameCellProps>(
         ref={ref}
         className={cn(
           className,
-          "w-20 h-20 border-2 border-foreground flex rounded-lg p-2 transition-all",
+          "max-w-20 w-full aspect-square border-2 border-foreground flex rounded-lg p-2 transition-all",
           isDisabled
             ? "pointer-events-none"
             : "hover:border-white hover:scale-105 cursor-pointer"
