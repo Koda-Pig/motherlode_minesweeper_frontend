@@ -52,6 +52,7 @@ function App() {
 
   return (
     <>
+      {/* placeholder for wallet connection */}
       <span className="absolute top-2.5 right-2.5 border-2 border-foreground rounded-xl px-3 py-1">
         connected
       </span>
