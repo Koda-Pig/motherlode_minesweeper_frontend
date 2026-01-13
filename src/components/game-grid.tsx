@@ -21,7 +21,7 @@ const GameGrid = forwardRef<HTMLDivElement, GameGridProps>(
         <TooltipTrigger asChild>
           <div
             ref={ref}
-            className="grid grid-cols-5 gap-1 aspect-square w-full max-w-[calc(var(--spacing)_*5*23)] border-2 border-foreground p-4 rounded-xl"
+            className="grid grid-cols-5 gap-1 aspect-square w-full max-w-[calc(var(--spacing)*5*23)] border-2 border-foreground p-4 rounded-xl"
             {...props}
           >
             {Array.from({ length: cellsToRender }).map((_, index) => {

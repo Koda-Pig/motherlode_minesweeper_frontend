@@ -12,6 +12,7 @@ type ControlPanelProps = {
   revealedCells: Set<number>;
   setRevealedCells: React.Dispatch<React.SetStateAction<Set<number>>>;
   setCellTypes: React.Dispatch<React.SetStateAction<CellType[]>>;
+  handleCashOut: () => void;
 };
 
 function initializeGameGrid(mines: number, gems: number): CellType[] {
@@ -38,7 +39,8 @@ const ControlPanel = forwardRef<HTMLDivElement, ControlPanelProps>(
       setGameStatus,
       revealedCells,
       setRevealedCells,
-      setCellTypes
+      setCellTypes,
+      handleCashOut
     },
     ref
   ) => {
@@ -62,12 +64,6 @@ const ControlPanel = forwardRef<HTMLDivElement, ControlPanelProps>(
         gems: clampedGems
       }));
     }, []);
-
-    const handleCashOut = useCallback(() => {
-      if (gameStatus === "playing" && revealedCells.size > 0) {
-        setGameStatus("won");
-      }
-    }, [gameStatus, revealedCells.size]);
 
     const startGame = useCallback(() => {
       const grid = initializeGameGrid(userInputs.mines, userInputs.gems);
@@ -158,27 +154,6 @@ const ControlPanel = forwardRef<HTMLDivElement, ControlPanelProps>(
           >
             CASH OUT
           </button>
-        )}
-
-        {(gameStatus === "won" || gameStatus === "lost") && (
-          <div
-            className="absolute inset-0 grid items-center text-center "
-            style={{ background: "radial-gradient(black, transparent)" }}
-          >
-            <div>
-              <p className="text-9xl mb-4">you {gameStatus}</p>
-              <button
-                onClick={() => {
-                  setGameStatus("idle");
-                  setRevealedCells(new Set());
-                  setCellTypes([]);
-                }}
-                className="border-2 border-foreground text-2xl px-6 py-2 rounded-xl outline-2 outline-foreground outline-offset-2 mx-auto"
-              >
-                play again
-              </button>
-            </div>
-          </div>
         )}
 
         <div className="border-2 border-foreground p-2">
