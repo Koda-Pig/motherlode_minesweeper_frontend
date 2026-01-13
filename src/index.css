@@ -46,16 +46,6 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  background-image: url("/background.jpg");
-  background-size: cover;
-}
-
 h1 {
   -webkit-text-stroke: 2px var(--color-foreground);
 }
