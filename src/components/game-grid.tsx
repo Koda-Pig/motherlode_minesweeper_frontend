@@ -1,8 +1,6 @@
 import { forwardRef } from "react";
 import { GameCell } from "./game-cell";
-
-type CellType = "mine" | "gem";
-type GameStatus = "idle" | "playing" | "won" | "lost";
+import type { CellType, GameStatus } from "@/types";
 
 interface GameGridProps {
   cellTypes: CellType[];
@@ -23,10 +21,10 @@ const GameGrid = forwardRef<HTMLDivElement, GameGridProps>(
         {...props}
       >
         {Array.from({ length: cellsToRender }).map((_, index) => {
-          // Using index as key is acceptable here since the grid is static
-          // eslint-disable-next-line react/no-array-index-key
           return (
             <GameCell
+              // Using index as key is acceptable here since the grid is static
+              // eslint-disable-next-line react/no-array-index-key
               key={index}
               cellType={cellTypes[index]}
               isRevealed={revealedCells.has(index)}

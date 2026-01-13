@@ -3,3 +3,6 @@ export type UserInputs = {
   gems: number;
   mines: number;
 };
+
+export type GameStatus = "idle" | "playing" | "won" | "lost";
+export type CellType = "mine" | "gem";
